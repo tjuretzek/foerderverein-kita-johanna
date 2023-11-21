@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: Futura;
+  src: url('../fonts/futura.woff2') format('woff2'), url('../fonts/futura.woff') format('woff');
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Tally;
+  src: url('../fonts/tally.woff2') format('woff2'), url('../fonts/tally.woff') format('woff');
+  font-style: normal;
+  font-display: block;
+}
+
+@layer base {
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+    appearance: none;
+  }
+}
