@@ -20,8 +20,11 @@ const config: Config = {
       fontSize: {
         sm: ['14px', '18px'],
         base: ['16px', '20px'],
-        lg: ['24px', '32px'],
+        lg: ['38px', '32px'],
         xl: ['48px', '64px'],
+      },
+      padding: {
+        15: '60px',
       },
     },
   },
