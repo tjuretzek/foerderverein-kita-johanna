@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <>
       <PageMetadata />
       <main className='w-full max-w-screen-lg mx-auto'>
-        <Suspense>{children}</Suspense>
+        <Suspense fallback={null}>{children}</Suspense>
       </main>
       <Footer />
     </>
