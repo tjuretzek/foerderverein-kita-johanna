@@ -14,14 +14,6 @@ export default tseslint.config(
 
   { files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'] },
   {
-    ignores: [
-      'src/utils/charting_library/*',
-      'src/utils/datafeeds/*',
-      'src/utils/health_computer/*',
-      'src/types/generated/**/*',
-    ],
-  },
-  {
     languageOptions: {
       parserOptions: { ecmaFeatures: { jsx: true } },
     },

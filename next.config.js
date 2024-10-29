@@ -1,11 +1,22 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   reactStrictMode: true,
-  async rewrites() {
+
+  async headers() {
     return [
       {
-        source: '/:any*',
-        destination: '/',
+        source: '/(.*)?',
+        headers: [
+          {
+            key: 'Referrer-Policy',
+            value: 'origin-when-cross-origin',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
       },
     ]
   },

@@ -1,9 +1,12 @@
 import Header from 'components/Header'
+import { metaData } from 'constants/pageMetadata'
 
-export default function StarPage() {
+export const metadata = metaData.home
+
+export default function Home() {
   return (
     <div className='bg-green h-screen p-5'>
-      <Header />
+      <Header size='large' />
       <section>
         <h1 className='font-tally text-xl text-secondary w-full text-center uppercase'>
           Seid dabei!
