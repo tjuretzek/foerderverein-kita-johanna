@@ -4,6 +4,9 @@ const config: Config = {
   content: ['./src/app/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        footer: "url('/footer.png')",
+      },
       colors: {
         background: '#FFF',
         green: '#7AB542',
@@ -18,13 +21,24 @@ const config: Config = {
         tally: ['Tally', 'sans-serif'],
       },
       fontSize: {
-        sm: ['14px', '18px'],
-        base: ['16px', '20px'],
-        lg: ['38px', '32px'],
+        sm: ['16px', '18px'],
+        base: ['20px', '26px'],
+        lg: ['38px', '44px'],
         xl: ['48px', '64px'],
+      },
+      height: {
+        25: '100px',
+        page: 'calc(100dvh - 100px)',
+      },
+      margin: {
+        25: '100px',
+      },
+      minHeight: {
+        page: 'calc(100dvh - 100px)',
       },
       padding: {
         15: '60px',
+        25: '100px',
       },
     },
   },

@@ -15,10 +15,12 @@ const socialMedia = {
 export const metaData: { [key: string]: Metadata } = {
   home: {
     title: 'Förderverein Kita Johanna e.V. - Alfhausen',
-    metadataBase: new URL('https://foerderverein-kita-johanna.de'),
     description:
       'Freunde und Förderer Kita Familienzentrum Johanna Alfhausen e.V. - Wir sind ein gemeinnütziger Verein, der sich zum Ziel gesetzt hat, die Arbeit der Kita Johanna zu unterstützen.',
     keywords: ['alfhausen', 'kita johanna', 'förderverein'],
+    alternates: {
+      canonical: `https://foerderverein-kita-johanna.de`,
+    },
     openGraph: {
       type: 'website',
       url: 'https://foerderverein-kita-johanna.de',
@@ -37,10 +39,12 @@ export const metaData: { [key: string]: Metadata } = {
   },
   mitgliedWerden: {
     title: 'Mitglied Werden | Förderverein Kita Johanna e.V. - Alfhausen',
-    metadataBase: new URL('https://foerderverein-kita-johanna.de'),
     description:
       'Seid dabei! Zusammen sind wir stark! Der jährliche Mitgliedsbeitrag beträgt 12€. Auch ohne Mitgliedschaft kann gespendet werden.',
     keywords: ['alfhausen', 'kita johanna', 'förderverein', 'mitglied werden'],
+    alternates: {
+      canonical: `https://foerderverein-kita-johanna.de/mitglied-werden`,
+    },
     openGraph: {
       type: 'website',
       url: 'https://foerderverein-kita-johanna.de/mitglied-werden',
@@ -54,6 +58,54 @@ export const metaData: { [key: string]: Metadata } = {
       card: 'summary_large_image',
       description:
         'Seid dabei! Zusammen sind wir stark! Der jährliche Mitgliedsbeitrag beträgt 12€. Auch ohne Mitgliedschaft kann gespendet werden.',
+      ...socialMedia,
+    },
+  },
+  spenden: {
+    title: 'Spenden | Förderverein Kita Johanna e.V. - Alfhausen',
+    description:
+      'Jede Spende hilft die Ziele des Fördervereins zu erreichen. Der Förderverein Kita Johanna e.V. ist ein gemeinnütziger Verein und berechtigt Spendenquittungen auszustellen.',
+    keywords: ['alfhausen', 'kita johanna', 'förderverein', 'spenden'],
+    alternates: {
+      canonical: `https://foerderverein-kita-johanna.de/spenden`,
+    },
+    openGraph: {
+      type: 'website',
+      url: 'https://foerderverein-kita-johanna.de/spenden',
+      locale: 'de_DE',
+      description:
+        'Jede Spende hilft die Ziele des Fördervereins zu erreichen. Der Förderverein Kita Johanna e.V. ist ein gemeinnütziger Verein und berechtigt Spendenquittungen auszustellen.',
+      siteName: 'Förderverein Kita Johanna e.V.',
+      ...socialMedia,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      description:
+        'Jede Spende hilft die Ziele des Fördervereins zu erreichen. Der Förderverein Kita Johanna e.V. ist ein gemeinnütziger Verein und berechtigt Spendenquittungen auszustellen.',
+      ...socialMedia,
+    },
+  },
+  kontakt: {
+    title: 'Kontakt | Förderverein Kita Johanna e.V. - Alfhausen',
+    description:
+      'Sie haben Fragen, Ideen oder Anregungen? Dann treten Sie mit uns in Kontakt. Wir freuen uns über jeden Beitrag!',
+    keywords: ['alfhausen', 'kita johanna', 'förderverein', 'kontakt'],
+    alternates: {
+      canonical: `https://foerderverein-kita-johanna.de/kontakt`,
+    },
+    openGraph: {
+      type: 'website',
+      url: 'https://foerderverein-kita-johanna.de/kontakt',
+      locale: 'de_DE',
+      description:
+        'Sie haben Fragen, Ideen oder Anregungen? Dann treten Sie mit uns in Kontakt. Wir freuen uns über jeden Beitrag!',
+      siteName: 'Förderverein Kita Johanna e.V.',
+      ...socialMedia,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      description:
+        'Sie haben Fragen, Ideen oder Anregungen? Dann treten Sie mit uns in Kontakt. Wir freuen uns über jeden Beitrag!',
       ...socialMedia,
     },
   },

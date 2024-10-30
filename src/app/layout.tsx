@@ -23,9 +23,18 @@ export default function RootLayout({
         <meta name='theme-color' content='#ffffff' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
-      <body className='p-0 m-0 scrollbar-hide'>
-        <main className='w-full max-w-screen-lg mx-auto'>{children}</main>
-        <Footer />
+      <body className='p-0 m-0 font-sans text-base scrollbar-hide text-black/70'>
+        <div className='max-w-screen-lg mx-auto'>
+          <div className='w-full shadow-[rgba(0,0,15,0.3)_0px_0px_15px_0px]'>
+            <main className='w-full'>{children}</main>
+            <Footer />
+          </div>
+          <div className='w-full'>
+            <p className='p-4 text-xs text-end md:px-0'>
+              &copy; {new Date().getFullYear()} {metadata.title as string}
+            </p>
+          </div>
+        </div>
         <Analytics />
       </body>
     </html>
