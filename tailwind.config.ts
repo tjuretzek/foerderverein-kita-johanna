@@ -48,7 +48,7 @@ const config: Config = {
     plugin(function ({ addUtilities }) {
       addUtilities({
         '.gradient-input-label': {
-          background: 'linear-gradient(180deg, rgba(255,255,255,1) 54%, rgba(255,255,255,0) 54%)',
+          background: 'linear-gradient(180deg, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 50%)',
         },
       })
     }),

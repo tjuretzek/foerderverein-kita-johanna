@@ -5,10 +5,12 @@ interface Props {
   text: string
   type: 'primary' | 'secondary'
   className?: string
+  onClick?: (args?: any) => void
+  disabled?: boolean
 }
 
 export default function Button(props: Props) {
-  const { href, text, type, className } = props
+  const { href, text, type, className, onClick, disabled } = props
 
   const classes =
     type === 'primary'
@@ -21,8 +23,10 @@ export default function Button(props: Props) {
         'px-6 py-2 text-[30px] font-tally drop-shadow-md hover:drop-shadow-none',
         classes,
         className,
+        disabled && 'opacity-50 pointer-events-none',
       )}
       href={href}
+      onClick={onClick ? () => onClick() : undefined}
       title={text}
     >
       {text}
