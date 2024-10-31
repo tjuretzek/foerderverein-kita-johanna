@@ -109,4 +109,28 @@ export const metaData: { [key: string]: Metadata } = {
       ...socialMedia,
     },
   },
+  datenschutz: {
+    title: 'Datenschutzerklärung | Förderverein Kita Johanna e.V. - Alfhausen',
+    description:
+      'Wir weisen darauf hin, dass zum Zwecke der Mitgliedschaft und Mitgliederverwaltung folgende automatisierte Daten der Mitglieder gespeichert, verarbeitet und genutzt werden: Name, Name des Kindes (optional), Anschrift, Telefonnummer, E-Mail-Adresse und Bankverbindung.',
+    keywords: ['alfhausen', 'kita johanna', 'förderverein', 'datenschutz'],
+    alternates: {
+      canonical: `https://foerderverein-kita-johanna.de/datenschutz`,
+    },
+    openGraph: {
+      type: 'website',
+      url: 'https://foerderverein-kita-johanna.de/datenschutz',
+      locale: 'de_DE',
+      description:
+        'Wir weisen darauf hin, dass zum Zwecke der Mitgliedschaft und Mitgliederverwaltung folgende automatisierte Daten der Mitglieder gespeichert, verarbeitet und genutzt werden: Name, Name des Kindes (optional), Anschrift, Telefonnummer, E-Mail-Adresse und Bankverbindung.',
+      siteName: 'Förderverein Kita Johanna e.V.',
+      ...socialMedia,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      description:
+        'Wir weisen darauf hin, dass zum Zwecke der Mitgliedschaft und Mitgliederverwaltung folgende automatisierte Daten der Mitglieder gespeichert, verarbeitet und genutzt werden: Name, Name des Kindes (optional), Anschrift, Telefonnummer, E-Mail-Adresse und Bankverbindung.',
+      ...socialMedia,
+    },
+  },
 }

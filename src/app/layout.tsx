@@ -30,7 +30,7 @@ export default function RootLayout({
             <Footer />
           </div>
           <div className='w-full'>
-            <p className='p-4 text-xs text-end md:px-0'>
+            <p className='p-4 text-xs text-end lg:px-0'>
               &copy; {new Date().getFullYear()} {metadata.title as string}
             </p>
           </div>

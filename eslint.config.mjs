@@ -41,6 +41,7 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-function-type': 'off',
       'linebreak-style': ['warn', 'unix'],
       'no-undef': 'off',
+      'no-useless-escape': 'off',
       'sort-imports': [
         'warn',
         {

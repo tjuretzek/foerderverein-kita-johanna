@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import plugin from 'tailwindcss/plugin'
 
 const config: Config = {
   content: ['./src/app/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
@@ -42,6 +43,15 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwind-scrollbar-hide')],
+  plugins: [
+    require('tailwind-scrollbar-hide'),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        '.gradient-input-label': {
+          background: 'linear-gradient(180deg, rgba(255,255,255,1) 54%, rgba(255,255,255,0) 54%)',
+        },
+      })
+    }),
+  ],
 }
 export default config
