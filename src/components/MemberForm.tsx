@@ -9,7 +9,6 @@ import { useCallback, useState } from 'react'
 const initialValues: FormValues = {
   lastname: '',
   firstname: '',
-  childname: '',
   street: '',
   number: '',
   zip: '',
@@ -20,6 +19,8 @@ const initialValues: FormValues = {
   bank: '',
   iban: '',
   bic: '',
+  datenschutz: false,
+  optin: false,
 }
 
 export default function MemberForm() {
@@ -28,7 +29,22 @@ export default function MemberForm() {
   const submitForm = useCallback(() => {}, [])
 
   const validate = useCallback((values: FormValues) => {
-    const errors = initialValues
+    const errors = {
+      lastname: '',
+      firstname: '',
+      street: '',
+      number: '',
+      zip: '',
+      city: '',
+      telephone: '',
+      email: '',
+      bankAccountOwner: '',
+      bank: '',
+      iban: '',
+      bic: '',
+      datenschutz: '',
+      optin: '',
+    } as FormErrors
     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
     const ibanRegex = /DE[a-zA-Z0-9]{2}\s?([0-9]{4}\s?){4}([0-9]{2})\s?/g
     const bicRegex = /^[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}/g
@@ -54,18 +70,15 @@ export default function MemberForm() {
     const valuesArray = Object.keys(values) as Array<keyof FormValues>
 
     valuesArray.forEach((key) => {
-      if (!values[key]) errors[key] = 'Pflichtfeld'
+      if (!values[key] && key !== 'datenschutz' && key !== 'optin') errors[key] = 'Pflichtfeld'
     })
 
     return errors
   }, [])
 
-  const handleSubmit = useCallback((values: FormValues, isValid: boolean) => {
-    if (!isValid) {
-      // TODO: scroll to error
-      setIsSubmitting(false)
-      return
-    }
+  const handleSubmit = useCallback((values: FormValues) => {
+    setIsSubmitting(true)
+    if (!values.datenschutz || !values.optin) return
 
     // TODO: submit form via sendJS
     console.log(values)
@@ -76,7 +89,13 @@ export default function MemberForm() {
   return (
     <Formik initialValues={initialValues} validate={validate} onSubmit={submitForm}>
       {(formik) => {
-        const { values, errors, touched, isValid } = formik
+        const { values, errors, touched } = formik
+
+        const disabled =
+          Object.keys(touched).length !== Object.keys(values).length ||
+          Object.keys(errors).length !== Object.keys(values).length ||
+          !Object.values(errors).every((error) => error === '')
+
         return (
           <Form>
             <div className='flex w-full'>
@@ -90,7 +109,28 @@ export default function MemberForm() {
                   Hiermit trete ich/wir dem Förderverein Kita & Familienzentrum Johanna Alfhausen
                   e.V. bei. Gleichzeitig erkenne ich die Vereinssatzung an.
                 </p>
-                <p className='text-justify'>
+                <label
+                  className={classNames(
+                    'text-justify w-full pl-8 cursor-pointer relative',
+                    isSubmitting && !values.datenschutz && 'text-red-600',
+                  )}
+                  htmlFor='datenschutz'
+                >
+                  <Field
+                    type='checkbox'
+                    name='datenschutz'
+                    id='datenschutz'
+                    className={classNames(
+                      'w-0 h-0 absolute left-0 top-0 !outline-none',
+                      'before:content[" "] before:w-6 before:h-6 before:border before:left-0 before:-top-1 before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer',
+                      isSubmitting && !values.datenschutz
+                        ? 'before:border-red-600'
+                        : 'before:border-green',
+                    )}
+                  />
+                  {values.datenschutz && (
+                    <span className='absolute w-4 h-4 left-1 top-0 z-20 block'>✔</span>
+                  )}
                   Über die{' '}
                   <a
                     href='/datenschutz-bestimmungen'
@@ -101,7 +141,12 @@ export default function MemberForm() {
                     Datenschutzbestimmungen
                   </a>{' '}
                   bin ich informiert.
-                </p>
+                  {isSubmitting && !values.datenschutz && (
+                    <span className='text-red-600 text-sm block mt-2'>
+                      Bitte lesen und bestätigen Sie die Datenschutzbestimmungen.
+                    </span>
+                  )}
+                </label>
                 <p className='text-justify'>
                   Mitglied des Vereins kann jede Person werden. Bei Minderjährigen ist der
                   Aufnahmeantrag durch die gesetzlichen Vertreter zu stellen.
@@ -287,13 +332,39 @@ export default function MemberForm() {
                   DE94ZZZ00002505630
                 </p>
                 <p className='text-justify'>Verwendungszweck: Name des Mitglieds/Spenders</p>
-                <p className='text-justify'>
+                <label
+                  className={classNames(
+                    'text-justify w-full pl-8 cursor-pointer relative',
+                    isSubmitting && !values.optin && 'text-red-600',
+                  )}
+                  htmlFor='optin'
+                >
+                  <Field
+                    type='checkbox'
+                    name='optin'
+                    id='optin'
+                    className={classNames(
+                      'w-0 h-0 absolute left-0 top-0 !outline-none',
+                      'before:content[" "] before:w-6 before:h-6 before:border before:left-0 before:-top-1 before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer',
+                      isSubmitting && !values.optin
+                        ? 'before:border-red-600'
+                        : 'before:border-green',
+                    )}
+                  />
+                  {values.optin && (
+                    <span className='absolute w-4 h-4 left-1 top-0 z-20 block'>✔</span>
+                  )}
                   Ich ermächtige die Freunde und Förderer Kita und Familienzentrum Johanna Alfhausen
                   e.V., Zahlungen von meinem Konto mittels Lastschrift einzuziehen. Zugleich weise
                   ich mein Kreditinstitut an, die von den Freunden und Förderern Kita und
                   Familienzentrum Johanna Alfhausen e.V. auf mein Konto gezogenen Lastschriften
                   einzulösen.
-                </p>
+                  {isSubmitting && !values.datenschutz && (
+                    <span className='text-red-600 text-sm block mt-2'>
+                      Bitte stimmen Sie dem Lastschriftmandat zu.
+                    </span>
+                  )}
+                </label>
               </div>
               <div className='flex flex-wrap items-start content-start w-full gap-4 md:w-1/2'>
                 <InputField
@@ -377,11 +448,11 @@ export default function MemberForm() {
                   <Button
                     href='#'
                     onClick={() => {
-                      handleSubmit(values, isValid)
+                      handleSubmit(values)
                     }}
                     type='primary'
                     text='Absenden'
-                    disabled={!isSubmitting || !isValid}
+                    disabled={disabled}
                   />
                 </div>
               </div>

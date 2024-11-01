@@ -8,7 +8,6 @@ type TailwindConfig = import('tailwindcss)').Config
 interface FormValues {
   lastname: string
   firstname: string
-  childname: string
   street: string
   number: string
   zip: string
@@ -19,4 +18,11 @@ interface FormValues {
   bank: string
   iban: string
   bic: string
+  datenschutz: boolean
+  optin: boolean
+}
+
+interface FormErrors extends FormValues {
+  datenschutz: string
+  optin: string
 }
