@@ -16,4 +16,4 @@ Zur Vereinfachung der Mitgliedergewinnung wurde ein Webinterface in Zusammenarbe
 
 Die Erfassten Daten der Eingabemaske werden verschlüsselt an eine zentrale Verabeitungsstelle weitergeleitet und dort verarbeitet.
 
-Sollten Sie eine Löschung Ihrer Daten wünschen, senden Sie eine formlose Mail an [service@foerderverein-kita-johanna.de](mailto:service@foerderverein-kita-johanna.de).
+Sollten Sie eine Löschung Ihrer Daten wünschen, senden Sie eine formlose Mail an [mail@foerderverein-kita-johanna.de](mailto:mail@foerderverein-kita-johanna.de).
