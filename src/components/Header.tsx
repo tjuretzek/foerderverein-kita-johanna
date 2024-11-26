@@ -31,7 +31,7 @@ export default function Header(props: Props) {
     <>
       <header
         className={classNames(
-          'w-full flex mb-10',
+          'w-full flex mb-10 z-20',
           isSmall ? 'bg-green p-1 px-2 fixed md:relative' : 'justify-center',
         )}
       >
@@ -88,7 +88,7 @@ export default function Header(props: Props) {
       {isSmall && (
         <div
           className={classNames(
-            'fixed grid w-full md:hidden top-11 transition-all duration-500',
+            'fixed grid w-full md:hidden top-11 transition-all duration-500 z-30',
             mobileNavExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0]',
           )}
         >

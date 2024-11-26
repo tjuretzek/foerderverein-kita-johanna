@@ -11,7 +11,7 @@ export default function Page(props: Props) {
   return (
     <div className='w-full min-h-page'>
       <Header size='small' />
-      <section className='w-full p-6 pt-16 md:pt-6'>
+      <section className='w-full p-6 pt-16 md:pt-6 z-0'>
         <h1 className='w-full text-xl text-center uppercase font-tally text-orange-dark'>
           {title}
         </h1>

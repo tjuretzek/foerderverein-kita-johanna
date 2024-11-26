@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className='bg-green p-6 text-secondary min-h-page'>
       <Header size='large' />
-      <section className='flex flex-wrap gap-2 w-full'>
+      <section className='flex flex-wrap gap-2 w-full z-0'>
         <h1 className='font-tally text-xl w-full text-center uppercase'>Seid dabei!</h1>
         <h2 className='font-tally text-lg w-full text-center uppercase'>
           Zusammen sind wir stark!
