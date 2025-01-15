@@ -19,6 +19,7 @@ export default function Button(props: Props) {
 
   return (
     <a
+      role='button'
       className={classNames(
         'px-6 py-2 text-[30px] font-tally drop-shadow-md hover:drop-shadow-none',
         classes,

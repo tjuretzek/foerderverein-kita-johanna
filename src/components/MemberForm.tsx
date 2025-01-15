@@ -166,6 +166,7 @@ export default function MemberForm() {
                     <label
                       className={classNames(
                         'text-justify w-full pl-8 cursor-pointer relative',
+                        'before:content[" "] before:w-6 before:h-6 before:border before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer before:absolute before:left-0 before:top-0.5',
                         isSubmitting && !values.datenschutz && 'text-red-600',
                       )}
                       htmlFor='datenschutz'
@@ -176,7 +177,6 @@ export default function MemberForm() {
                         id='datenschutz'
                         className={classNames(
                           'w-0 h-0 absolute left-0 top-0 !outline-none',
-                          'before:content[" "] before:w-6 before:h-6 before:border before:left-0 before:-top-1 before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer',
                           isSubmitting && !values.datenschutz
                             ? 'before:border-red-600'
                             : 'before:border-green',
@@ -287,24 +287,6 @@ export default function MemberForm() {
                       </InputField>
                     </div>
                     <div className='flex w-full gap-4'>
-                      <InputField label='Ort' name='city' className='w-2/3'>
-                        <Field
-                          type='text'
-                          name='city'
-                          placeholder='Musterstadt'
-                          id='city'
-                          className={classNames(
-                            'bg-green/20 w-full px-2 pb-2 pt-3 border-green border z-10 !outline-none',
-                            'focus:border-green',
-                            errors.city && touched.city && 'border-red-600 text-red',
-                          )}
-                        />
-                        <ErrorMessage
-                          name='city'
-                          component='p'
-                          className='absolute text-xs text-red-600 -bottom-1'
-                        />
-                      </InputField>
                       <InputField label='PLZ' name='zip' className='w-1/3'>
                         <Field
                           type='number'
@@ -320,6 +302,24 @@ export default function MemberForm() {
                         />
                         <ErrorMessage
                           name='zip'
+                          component='p'
+                          className='absolute text-xs text-red-600 -bottom-1'
+                        />
+                      </InputField>
+                      <InputField label='Ort' name='city' className='w-2/3'>
+                        <Field
+                          type='text'
+                          name='city'
+                          placeholder='Musterstadt'
+                          id='city'
+                          className={classNames(
+                            'bg-green/20 w-full px-2 pb-2 pt-3 border-green border z-10 !outline-none',
+                            'focus:border-green',
+                            errors.city && touched.city && 'border-red-600 text-red',
+                          )}
+                        />
+                        <ErrorMessage
+                          name='city'
                           component='p'
                           className='absolute text-xs text-red-600 -bottom-1'
                         />
@@ -388,7 +388,8 @@ export default function MemberForm() {
                     <p className='text-justify'>Verwendungszweck: Name des Mitglieds/Spenders</p>
                     <label
                       className={classNames(
-                        'text-justify w-full pl-8 cursor-pointer relative',
+                        'text-justify w-full cursor-pointer relative pl-8',
+                        'before:content[" "] before:w-6 before:h-6 before:border before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer before:absolute before:left-0 before:top-0.5',
                         isSubmitting && !values.optin && 'text-red-600',
                       )}
                       htmlFor='optin'
@@ -398,8 +399,7 @@ export default function MemberForm() {
                         name='optin'
                         id='optin'
                         className={classNames(
-                          'w-0 h-0 absolute left-0 top-0 !outline-none',
-                          'before:content[" "] before:w-6 before:h-6 before:border before:left-0 before:-top-1 before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer',
+                          'w-0 h-0 absolute left-0 top-0 !outline-none ',
                           isSubmitting && !values.optin
                             ? 'before:border-red-600'
                             : 'before:border-green',
