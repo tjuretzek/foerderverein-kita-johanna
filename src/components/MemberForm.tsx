@@ -109,6 +109,7 @@ export default function MemberForm() {
         () => setSuccess(true),
         (error) => setError(error.text),
       )
+      .finally(() => setIsSubmitting(false))
 
     return
   }
@@ -119,7 +120,6 @@ export default function MemberForm() {
         const { values, errors, touched } = formik
 
         const disabled =
-          Object.keys(touched).length !== Object.keys(values).length ||
           Object.keys(errors).length !== Object.keys(values).length ||
           !Object.values(errors).every((error) => error === '')
 
@@ -505,7 +505,7 @@ export default function MemberForm() {
                           handleSubmit(values)
                         }}
                         type='primary'
-                        text='Absenden'
+                        text={isSubmitting ? 'Wird Gesendet' : 'Absenden'}
                         disabled={disabled}
                       />
                     </div>
