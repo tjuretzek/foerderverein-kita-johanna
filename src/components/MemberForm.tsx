@@ -83,34 +83,37 @@ export default function MemberForm() {
     setIsSubmitting(true)
     if (!values.datenschutz || !values.optin) return
 
-    emailjs
-      .send(
-        'foerderverein_sender',
-        'template_lgh528m',
-        {
-          from_name: `${values.firstname} ${values.lastname}`,
-          firstname: values.firstname,
-          lastname: values.lastname,
-          street: values.street,
-          number: values.number,
-          zip: values.zip,
-          city: values.city,
-          telephone: values.telephone,
-          email: values.email,
-          bankAccountOwner: values.bankAccountOwner,
-          bank: values.bank,
-          iban: values.iban,
-          bic: values.bic,
-          reply_to: values.email,
-        },
-        { publicKey: 'calDnFmoZ8RmtZFQZ' },
-      )
-      .then(
-        () => setSuccess(true),
-        (error) => setError(error.text),
-      )
-      .finally(() => setIsSubmitting(false))
-
+    try {
+      emailjs
+        .send(
+          'foerderverein_sender',
+          'template_lgh528m',
+          {
+            from_name: `${values.firstname} ${values.lastname}`,
+            firstname: values.firstname,
+            lastname: values.lastname,
+            street: values.street,
+            number: values.number,
+            zip: values.zip,
+            city: values.city,
+            telephone: values.telephone,
+            email: values.email,
+            bankAccountOwner: values.bankAccountOwner,
+            bank: values.bank,
+            iban: values.iban,
+            bic: values.bic,
+            reply_to: values.email,
+          },
+          { publicKey: 'calDnFmoZ8RmtZFQZ' },
+        )
+        .then(
+          () => setSuccess(true),
+          (error) => setError(error.text),
+        )
+        .finally(() => setIsSubmitting(false))
+    } catch (error: any) {
+      setError(error)
+    }
     return
   }
 
@@ -505,7 +508,7 @@ export default function MemberForm() {
                           handleSubmit(values)
                         }}
                         type='primary'
-                        text={isSubmitting ? 'Wird Gesendet' : 'Absenden'}
+                        text='Absenden'
                         disabled={disabled}
                       />
                     </div>
