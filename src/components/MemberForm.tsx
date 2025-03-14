@@ -1,10 +1,11 @@
 'use client'
 
 import classNames from 'classnames'
-import Button from 'components/Button'
 import InputField from 'components/InputField'
 import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { useCallback, useState } from 'react'
+import { trackFormSubmission } from '../utils/analytics'
+import TrackedButton from './TrackedButton'
 
 const initialValues: FormValues = {
   lastname: '',
@@ -144,14 +145,18 @@ export default function MemberForm() {
 
       if (data.success) {
         setSuccess(true)
+        // Track successful form submission with our utility
+        trackFormSubmission('Mitgliedsantrag', true)
       } else {
         setError(
           data.error || 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
         )
+        trackFormSubmission('Mitgliedsantrag', false)
       }
     } catch (error: any) {
       setError('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.')
       console.error('Form submission error:', error)
+      trackFormSubmission('Mitgliedsantrag', false)
     } finally {
       setSubmitting(false)
       setIsSubmitting(false)
@@ -189,7 +194,14 @@ export default function MemberForm() {
                   Beim Versand ihres Mitgliedsantrags ist ein Fehler aufgetreten. Bitte versuchen
                   Sie es später erneut, oder kontaktieren Sie uns direkt.
                 </p>
-                <Button href='/kontakt' text='Kontakt' type='primary' className='mt-2' />
+                <TrackedButton
+                  href='/kontakt'
+                  text='Kontakt'
+                  type='primary'
+                  className='mt-2'
+                  trackingName='Kontakt nach Fehler'
+                  location='Mitglied werden'
+                />
               </div>
             )}
             {!success && error === '' && (
@@ -539,11 +551,13 @@ export default function MemberForm() {
                       />
                     </InputField>
                     <div className='flex w-full justify-center'>
-                      <Button
+                      <TrackedButton
                         href='#'
                         type='primary'
                         text='Absenden'
                         disabled={isDisabled || isSubmitting}
+                        trackingName='Mitgliedsantrag Formular'
+                        location='Mitglied werden'
                         onClick={(e) => {
                           e.preventDefault()
                           if (!isDisabled && !isSubmitting) {
