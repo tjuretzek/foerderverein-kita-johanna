@@ -10,12 +10,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@eslint/compat": "^1.2.2",
+    "@types/nodemailer": "^6.4.17",
     "@vercel/analytics": "^1.2.2",
     "classnames": "^2.5.1",
     "formik": "^2.4.6",
     "next": "^15",
+    "nodemailer": "^6.10.0",
     "prettier": "^3.3.3",
     "react": "^18",
     "react-dom": "^18.3.1",

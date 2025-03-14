@@ -5,7 +5,7 @@ interface Props {
   text: string
   type: 'primary' | 'secondary'
   className?: string
-  onClick?: (args?: any) => void
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
   disabled?: boolean
 }
 
@@ -27,7 +27,7 @@ export default function Button(props: Props) {
         disabled && 'opacity-50 pointer-events-none',
       )}
       href={href}
-      onClick={onClick ? () => onClick() : undefined}
+      onClick={onClick}
       title={text}
     >
       {text}

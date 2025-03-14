@@ -1,6 +1,5 @@
 'use client'
 
-import emailjs from '@emailjs/browser'
 import classNames from 'classnames'
 import Button from 'components/Button'
 import InputField from 'components/InputField'
@@ -29,102 +28,142 @@ export default function MemberForm() {
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
 
-  const submitForm = useCallback(() => {}, [])
-
   const validate = useCallback((values: FormValues) => {
-    const errors = {
-      lastname: '',
-      firstname: '',
-      street: '',
-      number: '',
-      zip: '',
-      city: '',
-      telephone: '',
-      email: '',
-      bankAccountOwner: '',
-      bank: '',
-      iban: '',
-      bic: '',
-      datenschutz: '',
-      optin: '',
-    } as FormErrors
-    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-    const ibanRegex = /DE[a-zA-Z0-9]{2}\s?([0-9]{4}\s?){4}([0-9]{2})\s?/g
-    const bicRegex = /^[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}/g
-    const phoneRegex = /(\(?([\d \-\)\–\+\/\(]+){6,}\)?([ .\-–\/]?)([\d]+))/g
-    const zipRegex = /^[0-9]{5}$/g
+    const errors = {} as FormErrors
 
-    errors.email = !emailRegex.test(values.email) ? 'Ungültiges E-Mail-Format' : ''
-    errors.iban = !ibanRegex.test(values.iban) ? 'Ungültige IBAN' : ''
-    errors.bic = !bicRegex.test(values.bic) ? 'Ungültige BIC' : ''
-    errors.zip = !zipRegex.test(values.zip) ? 'Ungültige PLZ' : ''
-    errors.firstname = values.firstname.length < 2 ? 'Ungültiger Vorname' : ''
-    errors.lastname = values.lastname.length < 2 ? 'Ungültiger Nachname' : ''
-    errors.street = values.street.length < 2 ? 'Ungültiger Straßenname' : ''
-    errors.number = values.number.length < 2 ? 'Ungültige Hausnummer' : ''
-    errors.bank = values.bank.length < 2 ? 'Ungültiges Kreditinstitut' : ''
-    errors.city = values.city.length < 2 ? 'Ungültiger Ort' : ''
-    errors.bankAccountOwner =
-      values.bankAccountOwner.length < 2
-        ? 'Ungültiger Name des Kontoinhabers/der Kontoinhaberin'
-        : ''
-    errors.telephone = !phoneRegex.test(values.telephone) ? 'Ungültige Telefonnummer' : ''
+    // Email validation
+    if (!values.email) {
+      errors.email = 'Pflichtfeld'
+    } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(values.email)) {
+      errors.email = 'Ungültiges E-Mail-Format'
+    }
 
-    const valuesArray = Object.keys(values) as Array<keyof FormValues>
+    // IBAN validation
+    if (!values.iban) {
+      errors.iban = 'Pflichtfeld'
+    } else if (!/DE[a-zA-Z0-9]{2}\s?([0-9]{4}\s?){4}([0-9]{2})\s?/g.test(values.iban)) {
+      errors.iban = 'Ungültige IBAN'
+    }
 
-    valuesArray.forEach((key) => {
-      if (!values[key] && key !== 'datenschutz' && key !== 'optin') errors[key] = 'Pflichtfeld'
-    })
+    // BIC validation
+    if (!values.bic) {
+      errors.bic = 'Pflichtfeld'
+    } else if (!/^[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}/g.test(values.bic)) {
+      errors.bic = 'Ungültige BIC'
+    }
+
+    // ZIP validation
+    if (!values.zip) {
+      errors.zip = 'Pflichtfeld'
+    } else if (!/^[0-9]{5}$/g.test(values.zip)) {
+      errors.zip = 'Ungültige PLZ'
+    }
+
+    // Name validations
+    if (!values.firstname) {
+      errors.firstname = 'Pflichtfeld'
+    } else if (values.firstname.length < 2) {
+      errors.firstname = 'Ungültiger Vorname'
+    }
+
+    if (!values.lastname) {
+      errors.lastname = 'Pflichtfeld'
+    } else if (values.lastname.length < 2) {
+      errors.lastname = 'Ungültiger Nachname'
+    }
+
+    // Address validations
+    if (!values.street) {
+      errors.street = 'Pflichtfeld'
+    } else if (values.street.length < 2) {
+      errors.street = 'Ungültiger Straßenname'
+    }
+
+    if (!values.number) {
+      errors.number = 'Pflichtfeld'
+    } else if (values.number.length < 1) {
+      errors.number = 'Ungültige Hausnummer'
+    }
+
+    if (!values.city) {
+      errors.city = 'Pflichtfeld'
+    } else if (values.city.length < 2) {
+      errors.city = 'Ungültiger Ort'
+    }
+
+    // Bank validations
+    if (!values.bank) {
+      errors.bank = 'Pflichtfeld'
+    } else if (values.bank.length < 2) {
+      errors.bank = 'Ungültiges Kreditinstitut'
+    }
+
+    if (!values.bankAccountOwner) {
+      errors.bankAccountOwner = 'Pflichtfeld'
+    } else if (values.bankAccountOwner.length < 2) {
+      errors.bankAccountOwner = 'Ungültiger Name des Kontoinhabers/der Kontoinhaberin'
+    }
+
+    // Phone validation
+    if (!values.telephone) {
+      errors.telephone = 'Pflichtfeld'
+    } else if (!/(\(?([\d \-\)\–\+\/\(]+){6,}\)?([ .\-–\/]?)([\d]+))/g.test(values.telephone)) {
+      errors.telephone = 'Ungültige Telefonnummer'
+    }
+
+    // Agreement checkboxes
+    if (!values.datenschutz) {
+      errors.datenschutz = 'Bitte lesen und bestätigen Sie die Datenschutzbestimmungen'
+    }
+
+    if (!values.optin) {
+      errors.optin = 'Bitte stimmen Sie dem Lastschriftmandat zu'
+    }
 
     return errors
   }, [])
 
-  const handleSubmit = (values: FormValues) => {
-    setIsSubmitting(true)
-    if (!values.datenschutz || !values.optin) return
-
+  const handleSubmit = async (
+    values: FormValues,
+    { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
+  ) => {
     try {
-      emailjs
-        .send(
-          'foerderverein_sender',
-          'template_lgh528m',
-          {
-            from_name: `${values.firstname} ${values.lastname}`,
-            firstname: values.firstname,
-            lastname: values.lastname,
-            street: values.street,
-            number: values.number,
-            zip: values.zip,
-            city: values.city,
-            telephone: values.telephone,
-            email: values.email,
-            bankAccountOwner: values.bankAccountOwner,
-            bank: values.bank,
-            iban: values.iban,
-            bic: values.bic,
-            reply_to: values.email,
-          },
-          { publicKey: 'calDnFmoZ8RmtZFQZ' },
+      setIsSubmitting(true)
+      setError('')
+
+      // Make the API request to our new endpoint
+      const response = await fetch('/api/submit-membership', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSuccess(true)
+      } else {
+        setError(
+          data.error || 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
         )
-        .then(
-          () => setSuccess(true),
-          (error) => setError(error.text),
-        )
-        .finally(() => setIsSubmitting(false))
+      }
     } catch (error: any) {
-      setError(error)
+      setError('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.')
+      console.error('Form submission error:', error)
+    } finally {
+      setSubmitting(false)
+      setIsSubmitting(false)
     }
-    return
   }
 
   return (
-    <Formik initialValues={initialValues} validate={validate} onSubmit={submitForm}>
+    <Formik initialValues={initialValues} validate={validate} onSubmit={handleSubmit}>
       {(formik) => {
-        const { values, errors, touched } = formik
+        const { values, errors, touched, isValid, dirty } = formik
 
-        const disabled =
-          Object.keys(errors).length !== Object.keys(values).length ||
-          !Object.values(errors).every((error) => error === '')
+        const isDisabled = !isValid || !dirty || !values.datenschutz || !values.optin
 
         return (
           <>
@@ -170,7 +209,7 @@ export default function MemberForm() {
                       className={classNames(
                         'text-justify w-full pl-8 cursor-pointer relative',
                         'before:content[" "] before:w-6 before:h-6 before:border before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer before:absolute before:left-0 before:top-0.5',
-                        isSubmitting && !values.datenschutz && 'text-red-600',
+                        errors.datenschutz && touched.datenschutz && 'text-red-600',
                       )}
                       htmlFor='datenschutz'
                     >
@@ -180,7 +219,7 @@ export default function MemberForm() {
                         id='datenschutz'
                         className={classNames(
                           'w-0 h-0 absolute left-0 top-0 !outline-none',
-                          isSubmitting && !values.datenschutz
+                          errors.datenschutz && touched.datenschutz
                             ? 'before:border-red-600'
                             : 'before:border-green',
                         )}
@@ -198,9 +237,9 @@ export default function MemberForm() {
                         Datenschutzbestimmungen
                       </a>{' '}
                       bin ich informiert.
-                      {isSubmitting && !values.datenschutz && (
+                      {errors.datenschutz && touched.datenschutz && (
                         <span className='text-red-600 text-sm block mt-2'>
-                          Bitte lesen und bestätigen Sie die Datenschutzbestimmungen.
+                          {errors.datenschutz}
                         </span>
                       )}
                     </label>
@@ -269,7 +308,7 @@ export default function MemberForm() {
                           className='absolute text-xs text-red-600 -bottom-1'
                         />
                       </InputField>
-                      <InputField label='Hausnummer' name='lastname' className='w-1/3'>
+                      <InputField label='Hausnummer' name='number' className='w-1/3'>
                         <Field
                           type='text'
                           name='number'
@@ -393,7 +432,7 @@ export default function MemberForm() {
                       className={classNames(
                         'text-justify w-full cursor-pointer relative pl-8',
                         'before:content[" "] before:w-6 before:h-6 before:border before:border-solid before:block before:bg-green/20 before:z-10 before:cursor-pointer before:absolute before:left-0 before:top-0.5',
-                        isSubmitting && !values.optin && 'text-red-600',
+                        errors.optin && touched.optin && 'text-red-600',
                       )}
                       htmlFor='optin'
                     >
@@ -403,7 +442,7 @@ export default function MemberForm() {
                         id='optin'
                         className={classNames(
                           'w-0 h-0 absolute left-0 top-0 !outline-none ',
-                          isSubmitting && !values.optin
+                          errors.optin && touched.optin
                             ? 'before:border-red-600'
                             : 'before:border-green',
                         )}
@@ -416,10 +455,8 @@ export default function MemberForm() {
                       Zugleich weise ich mein Kreditinstitut an, die von den Freunden und Förderern
                       Kita und Familienzentrum Johanna Alfhausen e.V. auf mein Konto gezogenen
                       Lastschriften einzulösen.
-                      {isSubmitting && !values.datenschutz && (
-                        <span className='text-red-600 text-sm block mt-2'>
-                          Bitte stimmen Sie dem Lastschriftmandat zu.
-                        </span>
+                      {errors.optin && touched.optin && (
+                        <span className='text-red-600 text-sm block mt-2'>{errors.optin}</span>
                       )}
                     </label>
                   </div>
@@ -504,12 +541,15 @@ export default function MemberForm() {
                     <div className='flex w-full justify-center'>
                       <Button
                         href='#'
-                        onClick={() => {
-                          handleSubmit(values)
-                        }}
                         type='primary'
                         text='Absenden'
-                        disabled={disabled}
+                        disabled={isDisabled || isSubmitting}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          if (!isDisabled && !isSubmitting) {
+                            formik.handleSubmit()
+                          }
+                        }}
                       />
                     </div>
                   </div>
