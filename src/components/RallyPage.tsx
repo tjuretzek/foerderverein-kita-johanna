@@ -11,10 +11,18 @@ interface RallyPageProps {
   title: string
   content: React.ReactNode
   question: string
+  expectedAnswer?: string
   onSuccess?: () => void
 }
 
-const RallyPage: React.FC<RallyPageProps> = ({ pageId, title, content, question, onSuccess }) => {
+const RallyPage: React.FC<RallyPageProps> = ({
+  pageId,
+  title,
+  content,
+  question,
+  expectedAnswer,
+  onSuccess,
+}) => {
   const [name, setName] = useState('')
   const [answer, setAnswer] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -72,6 +80,7 @@ const RallyPage: React.FC<RallyPageProps> = ({ pageId, title, content, question,
           name: name.trim(),
           pageId,
           answer: answer.trim(),
+          expectedAnswer,
         }),
       })
 

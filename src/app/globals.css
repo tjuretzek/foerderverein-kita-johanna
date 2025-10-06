@@ -3,29 +3,42 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: Futura;
+  font-family: 'Futura';
+  font-weight: 400;
+  font-style: normal;
   src:
     url('../fonts/futura.woff2') format('woff2'),
     url('../fonts/futura.woff') format('woff');
-  font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: Futura;
+  font-family: 'Futura';
+  font-weight: 700;
+  font-style: normal;
   src:
     url('../fonts/futura-heavy.woff2') format('woff2'),
     url('../fonts/futura-heavy.woff') format('woff');
-  font-style: normal;
-  font-weight: 700;
   font-display: swap;
 }
 
 @font-face {
-  font-family: Tally;
+  font-family: 'Tally';
+  font-weight: 400;
+  font-style: normal;
   src:
     url('../fonts/tally.woff2') format('woff2'),
     url('../fonts/tally.woff') format('woff');
-  font-style: normal;
-  font-display: block;
+  font-display: swap;
+}
+
+/* Override max-width for admin dashboard */
+body:has([data-admin-dashboard]) > div {
+  max-width: none !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+
+body:has([data-admin-dashboard]) footer {
+  display: none !important;
 }

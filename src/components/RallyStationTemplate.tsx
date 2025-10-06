@@ -28,6 +28,7 @@ export default function RallyStationTemplate({
   imagePath,
   textBlocks,
   question,
+  expectedAnswer,
 }: RallyStationTemplateProps) {
   const [rallyActive, setRallyActive] = useState(true)
 
@@ -72,6 +73,7 @@ export default function RallyStationTemplate({
         title={`Station ${stationNumber}: ${stationName}`}
         content={content}
         question={question}
+        expectedAnswer={expectedAnswer}
       />
     </RallyPageWrapper>
   )

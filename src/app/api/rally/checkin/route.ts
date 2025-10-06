@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     // Initialize database tables if they don't exist
     await initDatabase()
 
-    const { name, pageId, answer } = await request.json()
+    const { name, pageId, answer, expectedAnswer } = await request.json()
 
     if (!name || !pageId || !answer) {
       return NextResponse.json(
@@ -18,8 +18,8 @@ export async function POST(request: Request) {
     // Create or get user
     const user = await createOrGetUser(name)
 
-    // Create checkin
-    const checkin = await createCheckin(user.id, pageId, answer)
+    // Create checkin with expected answer for verification
+    const checkin = await createCheckin(user.id, pageId, answer, expectedAnswer)
 
     return NextResponse.json({
       success: true,

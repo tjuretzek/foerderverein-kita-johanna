@@ -19,15 +19,19 @@ export const rallyStations: RallyStation[] = [
     imagePath: '/images/rallye/1-kita-johanna.jpg',
     textBlocks: [
       {
-        text: 'Willkommen bei der ersten Station der Alfhausen Rallye! Das Kita und Familienzentrum Johanna ist ein wichtiger Ort für Kinder und Familien in Alfhausen.',
+        text: 'Die kommunale Kindertagesstätte Johanna in Alfhausen wurde am 03.08.2016 eröffnet. Der Bau wurde im April 2018 fertiggestellt und mit der Schlüsselübergabe an viele Kinder übergeben.',
       },
       {
-        text: 'Schauen Sie sich das Gebäude und die Umgebung genau an.',
+        text: 'Der moderne Kindergarten wurde von den Architekten von BW-Architektur geplant und mit einer Holzfassade sowie einem Dach aus Titanzink von RHEINZINK realisiert.',
+        className: 'text-gray-700',
+      },
+      {
+        text: 'Schauen Sie sich die Eingangstür genau an.',
         className: 'text-gray-600',
       },
     ],
-    question: 'Wie viele Fenster hat die Hauptfassade?',
-    expectedAnswer: '4',
+    question: 'Welche Farbe hat die Tür des Johanna Kindergartens?',
+    expectedAnswer: 'Orange',
   },
   {
     number: 2,
@@ -93,11 +97,20 @@ export const rallyStations: RallyStation[] = [
     slug: '5-heimathaus',
     imagePath: '/images/rallye/5-heimathaus.jpg',
     textBlocks: [
-      { text: 'Willkommen am Heimathaus Alfhausen!' },
-      { text: 'Schauen Sie sich das Heimathaus genau an.', className: 'text-gray-600' },
+      {
+        text: 'Das Heimathaus ist ein 200 Jahre altes Heuerhaus (erbaut 1798) vom Hof Ratermann in Heeke. Es wurde an seinem alten Standort abgetragen und unter den strengen Augen des Denkmalschutzes im ehemaligen Pfarrgarten unter alten Baumbeständen an der Thiener Straße wieder aufgebaut.',
+      },
+      {
+        text: 'Vom Urzustand her ist das Haus der Typ eines alten Deelen-Durchgangshauses. Es stellt in der Entwicklung der niederdeutschen Baukultur ein Verbindungsglied zum niederdeutschen Hallenhaus dar. Das Haus ist jetzt seit vielen Jahren Mittelpunkt des Heimatvereins.',
+        className: 'text-gray-700',
+      },
+      {
+        text: 'Zählen Sie die Fenster des Heimathauses.',
+        className: 'text-gray-600',
+      },
     ],
-    question: 'Aus welchem Material ist das Heimathaus gebaut?',
-    expectedAnswer: 'Holz',
+    question: 'Wieviel Fenster hat das Heimathaus?',
+    expectedAnswer: '16',
   },
   {
     number: 6,
@@ -106,10 +119,10 @@ export const rallyStations: RallyStation[] = [
     imagePath: '/images/rallye/6-ehrenmal-am-friedhof.jpg',
     textBlocks: [
       { text: 'Willkommen am Ehrenmal am Friedhof in Alfhausen!' },
-      { text: 'Schauen Sie sich das Ehrenmal genau an.', className: 'text-gray-600' },
+      { text: 'Zählen Sie die Gedenktafeln am Ehrenmal.', className: 'text-gray-600' },
     ],
-    question: 'Welche Inschrift steht auf dem Ehrenmal?',
-    expectedAnswer: 'Für den Stolz unserer Heimat',
+    question: 'Wieviele Gedenktafeln sind beim Ehrenmal zu sehen?',
+    expectedAnswer: '4',
   },
   {
     number: 7,
@@ -153,11 +166,16 @@ export const rallyStations: RallyStation[] = [
     slug: '9-grosser-stuhl',
     imagePath: '/images/rallye/9-grosser-stuhl.jpg',
     textBlocks: [
-      { text: 'Willkommen beim großen Stuhl in Alfhausen!' },
-      { text: 'Schauen Sie sich den großen Stuhl genau an.', className: 'text-gray-600' },
+      {
+        text: 'Am Hexenboll wurde durch den Heimatverein Alfhausen der Stuhl und das Fenster aufgestellt. Der Stuhl wurde gestiftet von Marianne Dresen.',
+      },
+      {
+        text: 'Schauen Sie sich den Holzkasten am Stuhl genau an.',
+        className: 'text-gray-600',
+      },
     ],
-    question: 'Wie hoch ist der große Stuhl ungefähr?',
-    expectedAnswer: '2 Meter',
+    question: 'Was befindet sich in dem Holzkasten, der an dem Stuhl hängt?',
+    expectedAnswer: 'Ein Fernglas',
   },
   {
     number: 10,
@@ -182,11 +200,20 @@ export const rallyStations: RallyStation[] = [
     slug: '11-grotte-am-altenheim',
     imagePath: '/images/rallye/11-grotte-am-altenheim.jpg',
     textBlocks: [
-      { text: 'Willkommen an der Grotte am Altenheim in Alfhausen!' },
-      { text: 'Schauen Sie sich die Grotte genau an.', className: 'text-gray-600' },
+      {
+        text: 'Das St. Antonius-Stift wurde als Wohnhaus für Gemeindeschwestern 1915 gegründet. 1922 entstand schließlich das Krankenhaus mit 10 Betten. Im Jahr 1972 musste das Antonius-Stift vom Beleg-Krankenhaus zum Seniorenpflegeheim umstrukturiert werden und verfügte über 16 Plätze.',
+      },
+      {
+        text: 'Es folgte im Laufe der Jahre eine Vielzahl von Baumaßnahmen und unser St. Antonius-Stift verfügt jetzt über 49 vollstationäre Pflegeplätze mit eingestreuter Kurzzeitpflege. Im Jahr 2018 wurde der Mehrgenerationengarten feierlich eingeweiht.',
+        className: 'text-gray-700',
+      },
+      {
+        text: 'Zählen Sie die Holzpfähle an der Grotte.',
+        className: 'text-gray-600',
+      },
     ],
-    question: 'Welche Figur steht in der Grotte?',
-    expectedAnswer: 'Jesus',
+    question: 'Wieviele Holzpfälle könnt ihr zählen an der Grotte?',
+    expectedAnswer: '30',
   },
   {
     number: 12,
@@ -194,11 +221,16 @@ export const rallyStations: RallyStation[] = [
     slug: '12-polizei',
     imagePath: '/images/rallye/12-polizei.jpg',
     textBlocks: [
-      { text: 'Willkommen an der Polizeistation in Alfhausen!' },
-      { text: 'Schauen Sie sich das Gebäude der Polizei genau an.', className: 'text-gray-600' },
+      {
+        text: 'Die Polizeistation Alfhausen ist zuständig für die Gemeinden Alfhausen und Rieste mit insgesamt etwa 7.100 Bürgern. Sie ist grundsätzlich wochentags von 8.00 – 16.00 Uhr erreichbar.',
+      },
+      {
+        text: 'Schauen Sie sich die Telefonnummern am Eingang genau an.',
+        className: 'text-gray-600',
+      },
     ],
-    question: 'Welche Telefonnummer steht am Eingang?',
-    expectedAnswer: '05462/2222',
+    question: 'Wie ist die Telefonnummer für Vertretungsfälle?',
+    expectedAnswer: '05439/969-0',
   },
   {
     number: 13,
@@ -227,11 +259,20 @@ export const rallyStations: RallyStation[] = [
     slug: '14-rathaus',
     imagePath: '/images/rallye/14-rathaus.jpg',
     textBlocks: [
-      { text: 'Willkommen am Rathaus Alfhausen!' },
-      { text: 'Schauen Sie sich das Rathaus genau an.', className: 'text-gray-600' },
+      {
+        text: 'Alfhausen, im sagenumwobenen Giersfeld, zu Füßen des Heiligenberges gelegen, ist ein über tausend Jahre altes Kirchdorf. Das Dorf wurde 977 erstmalig urkundlich erwähnt. Wahrzeichen der Gemeinde ist die alte Kirche mit dem Wehrturm.',
+      },
+      {
+        text: 'Auf einer Größe von 39 km² leben in Alfhausen heute 4.169 Einwohner. Auf silbernem Grund zeigt das Wappen der Gemeinde Alfhausen einen sechszackigen roten Stern unter einem Turnierkragen.',
+        className: 'text-gray-700',
+      },
+      {
+        text: 'Schauen Sie sich das Gemeindewappen genau an.',
+        className: 'text-gray-600',
+      },
     ],
-    question: 'Wie viele Flaggen sind am Rathaus gehisst?',
-    expectedAnswer: '4',
+    question: 'Welches Symbol ist im Wappen von Alfhausen?',
+    expectedAnswer: 'Sechseckiger roter Stern',
   },
   {
     number: 15,
@@ -239,11 +280,21 @@ export const rallyStations: RallyStation[] = [
     slug: '15-grundschule',
     imagePath: '/images/rallye/15-schule.jpg',
     textBlocks: [
-      { text: 'Willkommen an der Grundschule Alfhausen!' },
-      { text: 'Schauen Sie sich die Grundschule genau an.', className: 'text-gray-600' },
+      {
+        text: 'Der Schulträger der Grundschule Alfhausen ist die Samtgemeinde Bersenbrück. Die Schule wird seit dem 1. August 1997 als selbstständige, "Verlässliche Grundschule" geführt.',
+      },
+      {
+        text: 'Das zum 1. Februar 2014 erweiterte, fertig gestellte Grundschulgebäude umfasst inzwischen acht Klassenräume mit einem jeweils dazugehörigen Gruppenraum. Zudem verfügt die Grundschule über eine großzügige Mensa mit 60 Sitzplätzen und einer Pausenhalle mit Bühne.',
+        className: 'text-gray-700',
+      },
+      {
+        text: 'Schauen Sie sich die Hauswand der Paul-Moor-Schule genau an, wenn Sie von der Bahnhofsstraße hineinfährt.',
+        className: 'text-gray-600',
+      },
     ],
-    question: 'Wie heißt die Grundschule?',
-    expectedAnswer: 'Grundschule St. Johannis',
+    question:
+      'Welcher Gegenstand an der Hauswand der Paul-Moor-Schule sticht besonders hervor, wenn man die Einfahrt von der Bahnhofsstraße aus hineinfährt?',
+    expectedAnswer: 'Eine große Uhr',
   },
   {
     number: 16,
