@@ -163,7 +163,8 @@ const RallyPage: React.FC<RallyPageProps> = ({ pageId, title, content, question,
             onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
               e.preventDefault()
               if (!isSubmitting) {
-                handleSubmit(e as any)
+                const formEvent = e as unknown as React.FormEvent
+                handleSubmit(formEvent)
               }
             }}
           />

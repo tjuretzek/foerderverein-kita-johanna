@@ -153,7 +153,7 @@ export default function MemberForm() {
         )
         trackFormSubmission('Mitgliedsantrag', false)
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       setError('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.')
       console.error('Form submission error:', error)
       trackFormSubmission('Mitgliedsantrag', false)

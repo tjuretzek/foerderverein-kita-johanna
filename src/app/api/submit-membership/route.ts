@@ -119,27 +119,29 @@ export async function POST(request: Request) {
       const info = await transporter.sendMail(mailOptions)
       console.log('Email sent successfully:', info.messageId)
       return NextResponse.json({ success: true })
-    } catch (sendError: any) {
+    } catch (sendError: unknown) {
+      const errorMessage =
+        sendError instanceof Error ? sendError.message : 'Es ist ein unbekannter Fehler aufgetreten'
       console.error('Error sending email details:', {
-        message: sendError.message,
-        stack: sendError.stack,
-        code: sendError.code,
-        command: sendError.command,
+        message: errorMessage,
+        error: sendError,
       })
       return NextResponse.json(
         {
           success: false,
-          error: `Email sending failed: ${sendError.message}`,
+          error: `Email sending failed: ${errorMessage}`,
         },
         { status: 500 },
       )
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Es ist ein unbekannter Fehler aufgetreten'
     console.error('General error:', error)
     return NextResponse.json(
       {
         success: false,
-        error: `Server error: ${error.message || 'Unknown error'}`,
+        error: `Server error: ${errorMessage}`,
       },
       { status: 500 },
     )
