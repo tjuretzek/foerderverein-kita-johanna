@@ -2,9 +2,9 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
+import { isRallyActive } from '../config/rallyConfig'
 import RallyPage from './RallyPage'
 import RallyPageWrapper from './RallyPageWrapper'
-import { isRallyActive } from '../config/rallyConfig'
 
 interface TextBlock {
   text: string
