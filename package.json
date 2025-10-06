@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@eslint/compat": "^1.2.2",
+    "@neondatabase/serverless": "neondatabase/serverless",
     "@types/nodemailer": "^6.4.17",
     "@vercel/analytics": "^1.2.2",
     "classnames": "^2.5.1",
