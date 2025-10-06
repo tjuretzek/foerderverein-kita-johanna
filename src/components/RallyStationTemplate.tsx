@@ -1,6 +1,10 @@
+'use client'
+
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import RallyPage from './RallyPage'
 import RallyPageWrapper from './RallyPageWrapper'
+import { isRallyActive } from '../config/rallyConfig'
 
 interface TextBlock {
   text: string
@@ -25,8 +29,19 @@ export default function RallyStationTemplate({
   textBlocks,
   question,
 }: RallyStationTemplateProps) {
+  const [rallyActive, setRallyActive] = useState(true)
+
+  useEffect(() => {
+    setRallyActive(isRallyActive())
+  }, [])
+
   // WebP Pfad erstellen (JPG durch WebP ersetzen)
   const webpPath = imagePath.replace('.jpg', '.webp')
+
+  // Filtere Textblöcke: Nur grauer Text (Hinweise) wird ausgeblendet wenn Rally nicht aktiv
+  const filteredTextBlocks = rallyActive
+    ? textBlocks
+    : textBlocks.filter((block) => block.className !== 'text-gray-600')
 
   const content = (
     <div className='space-y-6'>
@@ -42,7 +57,7 @@ export default function RallyStationTemplate({
           />
         </picture>
       </div>
-      {textBlocks.map((block, index) => (
+      {filteredTextBlocks.map((block, index) => (
         <p key={index} className={block.className || 'font-bold text-gray-700'}>
           {block.text}
         </p>

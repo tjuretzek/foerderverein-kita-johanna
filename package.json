@@ -7,18 +7,21 @@
     "build": "next build",
     "format": "eslint ./src/ --fix && prettier --write ./src/",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-qr": "npx tsx scripts/generate-qr-codes.ts"
   },
   "dependencies": {
     "@eslint/compat": "^1.2.2",
     "@neondatabase/serverless": "neondatabase/serverless",
     "@types/nodemailer": "^6.4.17",
+    "@types/qrcode": "^1.5.5",
     "@vercel/analytics": "^1.2.2",
     "classnames": "^2.5.1",
     "formik": "^2.4.6",
     "next": "^15",
     "nodemailer": "^6.10.0",
     "prettier": "^3.3.3",
+    "qrcode": "^1.5.4",
     "react": "^18",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.5",

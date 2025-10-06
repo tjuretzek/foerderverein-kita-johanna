@@ -2,6 +2,7 @@
 
 import classNames from 'classnames'
 import { useEffect, useState } from 'react'
+import { isRallyActive } from '../config/rallyConfig'
 import InputField from './InputField'
 import TrackedButton from './TrackedButton'
 
@@ -19,6 +20,7 @@ const RallyPage: React.FC<RallyPageProps> = ({ pageId, title, content, question,
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [error, setError] = useState('')
+  const [rallyActive, setRallyActive] = useState(true)
 
   useEffect(() => {
     // Get name from localStorage on component mount
@@ -32,6 +34,10 @@ const RallyPage: React.FC<RallyPageProps> = ({ pageId, title, content, question,
     if (submittedPages.includes(pageId)) {
       setIsSubmitted(true)
     }
+
+    // Check if rally is active
+    const active = isRallyActive()
+    setRallyActive(active)
   }, [pageId])
 
   const handleNameChange = (value: string) => {
@@ -94,6 +100,17 @@ const RallyPage: React.FC<RallyPageProps> = ({ pageId, title, content, question,
         <p className='text-green-700'>
           Sie haben diese Station bereits besucht. Vielen Dank für Ihre Teilnahme!
         </p>
+      </div>
+    )
+  }
+
+  // Wenn Rally nicht aktiv ist, zeige nur Inhalt ohne Formular
+  if (!rallyActive) {
+    return (
+      <div className='max-w-2xl mx-auto p-6'>
+        <h1 className='w-full font-bold uppercase font-tally text-orange-dark mb-6'>{title}</h1>
+
+        <div className='mb-8'>{content}</div>
       </div>
     )
   }
