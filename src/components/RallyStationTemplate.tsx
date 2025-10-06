@@ -25,16 +25,22 @@ export default function RallyStationTemplate({
   textBlocks,
   question,
 }: RallyStationTemplateProps) {
+  // WebP Pfad erstellen (JPG durch WebP ersetzen)
+  const webpPath = imagePath.replace('.jpg', '.webp')
+
   const content = (
     <div className='space-y-6'>
       <div className='w-full'>
-        <Image
-          src={imagePath}
-          alt={stationName}
-          width={1024}
-          height={678}
-          className='w-full rounded-lg shadow-lg'
-        />
+        <picture>
+          <source srcSet={webpPath} type='image/webp' />
+          <Image
+            src={imagePath}
+            alt={stationName}
+            width={1024}
+            height={678}
+            className='w-full rounded-lg shadow-lg'
+          />
+        </picture>
       </div>
       {textBlocks.map((block, index) => (
         <p key={index} className={block.className || 'font-bold text-gray-700'}>
