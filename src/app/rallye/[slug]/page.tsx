@@ -3,9 +3,9 @@ import RallyStationTemplate from '../../../components/RallyStationTemplate'
 import { getStationBySlug, rallyStations } from '../../../data/rallyStations'
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 // Generate static params for all stations
@@ -15,8 +15,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export default function RallyStationPage({ params }: PageProps) {
-  const station = getStationBySlug(params.slug)
+export default async function RallyStationPage({ params }: PageProps) {
+  const { slug } = await params
+  const station = getStationBySlug(slug)
 
   // Wenn die Station nicht gefunden wurde, zeige 404
   if (!station) {
