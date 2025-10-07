@@ -47,7 +47,7 @@ export const rallyStations: RallyStation[] = [
         className: 'text-gray-700',
       },
       {
-        text: 'Schauen Sie sich das Angebot der Markthalle genau an.',
+        text: 'Schauen Sie sich die Informationen am Eingang der Markthalle genau an.',
         className: 'text-gray-600',
       },
     ],
