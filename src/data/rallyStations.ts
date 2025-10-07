@@ -39,11 +39,20 @@ export const rallyStations: RallyStation[] = [
     slug: '2-markthalle-alfhausen',
     imagePath: '/images/rallye/2-markthalle-alfhausen.jpg',
     textBlocks: [
-      { text: 'Willkommen an der Markthalle in Alfhausen!' },
-      { text: 'Schauen Sie sich die Markthalle genau an.', className: 'text-gray-600' },
+      {
+        text: 'Die Markthalle Alfhausen wurde im Frühjahr 2017 gegründet und nach über einem Jahr intensiver Konzeptarbeit von vier Gleichgesinnten ins Leben gerufen. Nach dem Vorbild der großen europäischen Markthallen aus dem 19. Jahrhundert bietet sie Einwohnern und Besuchern einen zentralen Marktplatz für regionale und nachhaltig produzierte Lebensmittel.',
+      },
+      {
+        text: 'Das Besondere an der Markthalle ist die breite Produktpalette aus der Region sowie Mitmachangebote wie Brotbacken nach alten Rezepten, Koch- und Ernährungskurse, Eventcatering und Erlebnisgastronomie. Die Markthalle steht für Regionalität, Nachhaltigkeit, Qualität und Bodenständigkeit – und möchte Alfhausen zu einer Oase der Sinne und schönen Dinge machen.',
+        className: 'text-gray-700',
+      },
+      {
+        text: 'Schauen Sie sich das Angebot der Markthalle genau an.',
+        className: 'text-gray-600',
+      },
     ],
-    question: 'Was wird hier verkauft?',
-    expectedAnswer: 'alles',
+    question: 'An welchen Tagen hat die Markthalle Alfhausen geöffnet?',
+    expectedAnswer: 'Freitags und Samstags',
   },
   {
     number: 3,
