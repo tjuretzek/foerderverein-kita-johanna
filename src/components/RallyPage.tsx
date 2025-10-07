@@ -117,7 +117,9 @@ const RallyPage: React.FC<RallyPageProps> = ({
   if (!rallyActive) {
     return (
       <div className='max-w-2xl mx-auto p-6'>
-        <h1 className='w-full font-bold uppercase font-tally text-orange-dark mb-6'>{title}</h1>
+        <h1 className='w-full font-bold uppercase text-lg font-tally text-orange-dark mb-6'>
+          {title}
+        </h1>
 
         <div className='mb-8'>{content}</div>
       </div>
@@ -126,7 +128,9 @@ const RallyPage: React.FC<RallyPageProps> = ({
 
   return (
     <div className='max-w-2xl mx-auto p-6'>
-      <h1 className='w-full font-bold uppercase font-tally text-orange-dark mb-6'>{title}</h1>
+      <h1 className='w-full font-bold uppercase text-lg font-tally text-orange-dark mb-6'>
+        {title}
+      </h1>
 
       <div className='mb-8'>{content}</div>
 

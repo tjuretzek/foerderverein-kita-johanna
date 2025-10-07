@@ -70,7 +70,7 @@ export default function RallyStationTemplate({
     <RallyPageWrapper>
       <RallyPage
         pageId={pageId}
-        title={`Station ${stationNumber}: ${stationName}`}
+        title={stationName}
         content={content}
         question={question}
         expectedAnswer={expectedAnswer}
