@@ -118,22 +118,6 @@ async function generateQRCodes() {
     }
   }
 
-  // Generiere auch QR-Code für die Übersichtsseite
-  const overviewUrl = `${BASE_URL}/rallye/overview`
-  const overviewFileName = 'overview.png'
-  const overviewFilePath = path.join(OUTPUT_DIR, overviewFileName)
-  const overviewTitle = 'Rallye Übersicht'
-
-  try {
-    await generateQRCodeWithTitle(overviewUrl, overviewTitle, overviewFilePath)
-
-    console.log(`✅ Übersichtsseite`)
-    console.log(`   URL: ${overviewUrl}`)
-    console.log(`   Datei: ${overviewFileName}\n`)
-  } catch (error) {
-    console.error(`❌ Fehler bei Übersichtsseite:`, error)
-  }
-
   console.log('✨ QR-Code-Generierung abgeschlossen!')
   console.log(`📂 Alle QR-Codes wurden in ${OUTPUT_DIR} gespeichert`)
 }

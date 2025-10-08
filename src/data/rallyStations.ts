@@ -243,7 +243,7 @@ export const rallyStations: RallyStation[] = [
   },
   {
     number: 13,
-    name: 'Malteser Hilfsdienstes e. V.',
+    name: 'Malteser Hilfsdienst e. V.',
     slug: '13-malteser',
     imagePath: '/images/rallye/13-malteser.jpg',
     textBlocks: [
@@ -353,12 +353,4 @@ export const rallyStations: RallyStation[] = [
 // Helper Funktion um eine Station anhand ihres Slugs zu finden
 export function getStationBySlug(slug: string): RallyStation | undefined {
   return rallyStations.find((station) => station.slug === slug)
-}
-
-// Helper Funktion um den Namen einer Station anhand der pageId zu finden (für Overview)
-export function getStationNameByPageId(pageId: string): string {
-  // pageId Format: "rallye-{slug}"
-  const slug = pageId.replace('rallye-', '')
-  const station = getStationBySlug(slug)
-  return station ? `Station ${station.number}: ${station.name}` : pageId
 }
