@@ -171,7 +171,7 @@ export const rallyStations: RallyStation[] = [
   },
   {
     number: 9,
-    name: 'Großer Stuhl',
+    name: 'Der Große Stuhl',
     slug: '9-grosser-stuhl',
     imagePath: '/images/rallye/9-grosser-stuhl.jpg',
     textBlocks: [
@@ -226,7 +226,7 @@ export const rallyStations: RallyStation[] = [
   },
   {
     number: 12,
-    name: 'Polizei',
+    name: 'Polizei Alfhausen',
     slug: '12-polizei',
     imagePath: '/images/rallye/12-polizei.jpg',
     textBlocks: [
@@ -243,7 +243,7 @@ export const rallyStations: RallyStation[] = [
   },
   {
     number: 13,
-    name: 'Malteser Hilfsdienst',
+    name: 'Malteser Hilfsdienstes e. V.',
     slug: '13-malteser',
     imagePath: '/images/rallye/13-malteser.jpg',
     textBlocks: [
@@ -264,7 +264,7 @@ export const rallyStations: RallyStation[] = [
   },
   {
     number: 14,
-    name: 'Rathaus',
+    name: 'Rathaus Alfhausen',
     slug: '14-rathaus',
     imagePath: '/images/rallye/14-rathaus.jpg',
     textBlocks: [
@@ -285,7 +285,7 @@ export const rallyStations: RallyStation[] = [
   },
   {
     number: 15,
-    name: 'Grundschule',
+    name: 'Grundschule Alfhausen',
     slug: '15-grundschule',
     imagePath: '/images/rallye/15-schule.jpg',
     textBlocks: [
