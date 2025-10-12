@@ -76,7 +76,7 @@ export const rallyStations: RallyStation[] = [
         className: 'text-gray-600',
       },
     ],
-    question: 'Wie alt ist das Haus mit der Hausnummer 2?',
+    question: 'In welchem Jahr wurde das Haus mit der Hausnummer 2 erbaut?',
     expectedAnswer: '1796',
   },
   {
