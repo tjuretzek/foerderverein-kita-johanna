@@ -184,7 +184,7 @@ export const rallyStations: RallyStation[] = [
       },
     ],
     question: 'Was befindet sich in dem Holzkasten, der an dem Stuhl hängt?',
-    expectedAnswer: 'Ein Fernglas',
+    expectedAnswer: 'Nichts',
   },
   {
     number: 10,
@@ -260,7 +260,7 @@ export const rallyStations: RallyStation[] = [
       },
     ],
     question: 'An welchen Tagen fährt der mobile Einkaufswagen in Alfhausen?',
-    expectedAnswer: 'Jeden 2. Dienstag, Mittwochs 14-tägig',
+    expectedAnswer: '14-tägig mittwochs',
   },
   {
     number: 14,
