@@ -19,6 +19,8 @@ export default function AdminDashboard() {
   const [sortBy, setSortBy] = useState<'name' | 'erreicht' | 'korrekt'>('name')
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc')
 
+  const maxStations = rallyStations.length
+
   useEffect(() => {
     // Check if already authenticated from sessionStorage
     const savedPassword = sessionStorage.getItem('rally_admin_auth')
@@ -394,7 +396,9 @@ export default function AdminDashboard() {
                       )}
                     </div>
                   </th>
-                  <th className='px-4 py-3 text-center text-sm font-semibold'>Stationen (1-17)</th>
+                  <th className='px-4 py-3 text-center text-sm font-semibold'>
+                    Stationen (1-{maxStations})
+                  </th>
                   <th
                     className='px-4 py-3 text-center text-sm font-semibold cursor-pointer hover:bg-gray-600 transition'
                     onClick={() => handleSort('erreicht')}
@@ -422,7 +426,7 @@ export default function AdminDashboard() {
               <tbody className='divide-y divide-gray-700'>
                 {sortedUsers.map((user) => {
                   const correctAnswers = countCorrectAnswers(user)
-                  const totalStations = user.checkins?.length || 0
+                  const totalStations = Math.min(user.checkins?.length || 0, maxStations)
 
                   return (
                     <tr
@@ -454,69 +458,73 @@ export default function AdminDashboard() {
                       <td className='px-4 py-8 relative' style={{ overflow: 'visible' }}>
                         {/* Station Circles */}
                         <div className='flex gap-1 justify-center items-center'>
-                          {Array.from({ length: 17 }, (_, i) => i + 1).map((stationNum) => {
-                            const checkin = getStationCheckin(user, stationNum)
-                            return (
-                              <div
-                                key={stationNum}
-                                className='relative group'
-                                onClick={(e) => {
-                                  if (checkin) {
-                                    const rect = e.currentTarget.getBoundingClientRect()
-                                    setTooltipPosition({
-                                      x: rect.left + rect.width / 2,
-                                      y: rect.bottom + 8,
-                                    })
-                                    setSelectedCheckin(
-                                      selectedCheckin === checkin.id ? null : checkin.id,
-                                    )
-                                  }
-                                }}
-                                onMouseEnter={(e) => {
-                                  if (checkin && selectedCheckin !== checkin.id) {
-                                    const rect = e.currentTarget.getBoundingClientRect()
-                                    setTooltipPosition({
-                                      x: rect.left + rect.width / 2,
-                                      y: rect.bottom + 8,
-                                    })
-                                  }
-                                }}
-                              >
+                          {Array.from({ length: maxStations }, (_, i) => i + 1).map(
+                            (stationNum) => {
+                              const checkin = getStationCheckin(user, stationNum)
+                              return (
                                 <div
-                                  className='w-8 h-8 rounded-full border-2 flex items-center justify-center cursor-pointer transition'
-                                  style={{
-                                    backgroundColor: !checkin
-                                      ? '#374151'
-                                      : checkin.is_correct === true
-                                        ? '#7AB542'
-                                        : '#dc2626',
-                                    borderColor: !checkin
-                                      ? '#4b5563'
-                                      : checkin.is_correct === true
-                                        ? '#048242'
-                                        : '#b91c1c',
+                                  key={stationNum}
+                                  className='relative group'
+                                  onClick={(e) => {
+                                    if (checkin) {
+                                      const rect = e.currentTarget.getBoundingClientRect()
+                                      setTooltipPosition({
+                                        x: rect.left + rect.width / 2,
+                                        y: rect.bottom + 8,
+                                      })
+                                      setSelectedCheckin(
+                                        selectedCheckin === checkin.id ? null : checkin.id,
+                                      )
+                                    }
+                                  }}
+                                  onMouseEnter={(e) => {
+                                    if (checkin && selectedCheckin !== checkin.id) {
+                                      const rect = e.currentTarget.getBoundingClientRect()
+                                      setTooltipPosition({
+                                        x: rect.left + rect.width / 2,
+                                        y: rect.bottom + 8,
+                                      })
+                                    }
                                   }}
                                 >
-                                  {checkin && checkin.is_correct === true && (
-                                    <span className='text-white text-sm font-bold'>✓</span>
-                                  )}
-                                  {checkin && checkin.is_correct === false && (
-                                    <span className='text-white text-xs'>
-                                      ✕{!checkin.manually_verified && '?'}
-                                    </span>
-                                  )}
-                                  {!checkin && (
-                                    <span className='text-gray-500 text-xs'>{stationNum}</span>
-                                  )}
-                                </div>
+                                  <div
+                                    className='w-8 h-8 rounded-full border-2 flex items-center justify-center cursor-pointer transition'
+                                    style={{
+                                      backgroundColor: !checkin
+                                        ? '#374151'
+                                        : checkin.is_correct === true
+                                          ? '#7AB542'
+                                          : '#dc2626',
+                                      borderColor: !checkin
+                                        ? '#4b5563'
+                                        : checkin.is_correct === true
+                                          ? '#048242'
+                                          : '#b91c1c',
+                                    }}
+                                  >
+                                    {checkin && checkin.is_correct === true && (
+                                      <span className='text-white text-sm font-bold'>✓</span>
+                                    )}
+                                    {checkin && checkin.is_correct === false && (
+                                      <span className='text-white text-xs'>
+                                        ✕{!checkin.manually_verified && '?'}
+                                      </span>
+                                    )}
+                                    {!checkin && (
+                                      <span className='text-gray-500 text-xs'>{stationNum}</span>
+                                    )}
+                                  </div>
 
-                                {/* Tooltip - wird am Ende der Seite gerendert */}
-                              </div>
-                            )
-                          })}
+                                  {/* Tooltip - wird am Ende der Seite gerendert */}
+                                </div>
+                              )
+                            },
+                          )}
                         </div>
                       </td>
-                      <td className='px-4 py-3 text-center font-semibold'>{totalStations}/17</td>
+                      <td className='px-4 py-3 text-center font-semibold'>
+                        {totalStations}/{maxStations}
+                      </td>
                       <td className='px-4 py-3 text-center font-semibold'>
                         <span
                           className={
