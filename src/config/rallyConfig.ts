@@ -2,7 +2,7 @@
 export const rallyConfig = {
   // Zeitraum in UTC+2 (Europe/Berlin)
   startDate: new Date('2025-10-06T00:00:00+02:00'),
-  endDate: new Date('2025-10-12T23:59:59+02:00'),
+  endDate: new Date('2025-10-12T16:45:00+02:00'),
 
   // Name des Events (optional für zukünftige Verwendung)
   eventName: 'Alfhausen Rallye',
