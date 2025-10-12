@@ -289,7 +289,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <div data-admin-dashboard className='min-h-screen w-full bg-gray-900 text-white p-6'>
+    <div data-admin-dashboard className='min-h-screen w-full bg-gray-900 text-white p-6 pb-24'>
       <div className='w-full max-w-full'>
         {/* Header */}
         <div className='flex justify-between items-center mb-6'>
