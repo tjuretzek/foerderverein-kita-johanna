@@ -314,7 +314,7 @@ export default function AdminDashboard() {
                   }
                 }
               }}
-              className='px-4 py-2 bg-yellow-600 rounded hover:bg-yellow-700 transition text-sm'
+              className='px-4 py-2 bg-yellow-600 rounded hover:bg-yellow-700 transition text-sm hidden'
             >
               DB Reset
             </button>
