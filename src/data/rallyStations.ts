@@ -221,7 +221,7 @@ export const rallyStations: RallyStation[] = [
         className: 'text-gray-600',
       },
     ],
-    question: 'Wieviele Holzpfälle könnt ihr zählen an der Grotte?',
+    question: 'Wieviele Holzpfähle könnt ihr zählen an der Grotte?',
     expectedAnswer: '30',
   },
   {
