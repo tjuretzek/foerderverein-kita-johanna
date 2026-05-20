@@ -30,3 +30,10 @@ Im Mittelpunkt stehen die Kinder und ihre Bedürfnisse. Wo das Budget der Einric
 - [Spenden](https://foerderverein-kita-johanna.de/spenden): Bankverbindung und Hinweise zu Spendenquittungen.
 - [Kontakt](https://foerderverein-kita-johanna.de/kontakt): Anschrift, Telefon, E-Mail, Vorstand.
 - [Datenschutz](https://foerderverein-kita-johanna.de/datenschutz-bestimmungen): Datenschutzerklärung des Vereins.
+
+## Optional
+
+- [Vollständiger Kontext für LLMs (llms-full.txt)](https://foerderverein-kita-johanna.de/llms-full.txt): Erweiterte Version mit allen Inhalten, FAQ und Kontaktdaten.
+- [Agent Guidance (agents.md)](https://foerderverein-kita-johanna.de/agents.md): Wann diese Quelle nutzen, wann nicht.
+- [Sitemap](https://foerderverein-kita-johanna.de/sitemap.xml)
+- [Markdown-Variante der Startseite](https://foerderverein-kita-johanna.de/index.md): Auch über `Accept: text/markdown` verfügbar.

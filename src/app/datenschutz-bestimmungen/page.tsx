@@ -1,11 +1,18 @@
+import JsonLd from 'components/JsonLd'
 import Page from 'components/Page'
-import { metaData } from 'constants/pageMetadata'
+import { buildBreadcrumb, metaData } from 'constants/pageMetadata'
 
 export const metadata = metaData.datenschutz
 
 export default function PrivacyPage() {
   return (
     <Page title='Datenschutz&shy;bestimmungen'>
+      <JsonLd
+        data={buildBreadcrumb([
+          { name: 'Startseite', path: '/' },
+          { name: 'Datenschutz', path: '/datenschutz-bestimmungen' },
+        ])}
+      />
       <div className='flex flex-wrap w-full gap-4 mt-12'>
         <h2 className='w-full text-lg uppercase font-tally text-green'>Hinweise zum Datenschutz</h2>
         <p className='text-justify'>

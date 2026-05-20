@@ -1,6 +1,6 @@
 import { Analytics } from '@vercel/analytics/react'
 import Footer from 'components/Footer'
-import { metaData, organizationJsonLd } from 'constants/pageMetadata'
+import { metaData, organizationJsonLd, websiteJsonLd } from 'constants/pageMetadata'
 import type { Viewport } from 'next'
 import './globals.css'
 
@@ -22,7 +22,12 @@ export default function RootLayout({
       <body className='p-0 m-0 font-sans text-base scrollbar-hide text-black/70'>
         <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [organizationJsonLd, websiteJsonLd],
+            }),
+          }}
         />
         <div className='max-w-screen-lg mx-auto'>
           <div className='w-full shadow-[rgba(0,0,15,0.3)_0px_0px_15px_0px]'>

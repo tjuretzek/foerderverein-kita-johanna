@@ -1,6 +1,7 @@
+import JsonLd from 'components/JsonLd'
 import Page from 'components/Page'
 import Person from 'components/Person'
-import { metaData } from 'constants/pageMetadata'
+import { buildBreadcrumb, contactPageJsonLd, metaData } from 'constants/pageMetadata'
 import Image from 'next/image'
 
 export const metadata = metaData.kontakt
@@ -8,6 +9,13 @@ export const metadata = metaData.kontakt
 export default function ContactPage() {
   return (
     <Page title='Kontakt' subtitle='Kontaktieren Sie uns gerne bei Fragen oder Anregungen.'>
+      <JsonLd data={contactPageJsonLd} />
+      <JsonLd
+        data={buildBreadcrumb([
+          { name: 'Startseite', path: '/' },
+          { name: 'Kontakt', path: '/kontakt' },
+        ])}
+      />
       <h2 className='font-tally text-lg w-full uppercase text-green mt-12'>Das sind wir</h2>
       <div className='flex flex-wrap mt-6 justify-center md:justify-between'>
         <Person name='Jennifer Feldkamp' position='Vorsitzende' src='/jennifer-feldkamp.png' />

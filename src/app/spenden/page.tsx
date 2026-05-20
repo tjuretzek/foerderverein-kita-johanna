@@ -1,11 +1,19 @@
+import JsonLd from 'components/JsonLd'
 import Page from 'components/Page'
-import { metaData } from 'constants/pageMetadata'
+import { buildBreadcrumb, donateActionJsonLd, metaData } from 'constants/pageMetadata'
 
 export const metadata = metaData.spenden
 
 export default function DonatePage() {
   return (
     <Page title='Spenden' subtitle='Auch ohne Mitgliedschaft kann gespendet werden!'>
+      <JsonLd data={donateActionJsonLd} />
+      <JsonLd
+        data={buildBreadcrumb([
+          { name: 'Startseite', path: '/' },
+          { name: 'Spenden', path: '/spenden' },
+        ])}
+      />
       <div className='w-full flex flex-wrap gap-4'>
         <h2 className='font-tally text-lg w-full uppercase text-green mt-12'>Bankverbindung</h2>
         <h3 className='font-bold w-full'>Kreissparkasse Bersenbrück</h3>
