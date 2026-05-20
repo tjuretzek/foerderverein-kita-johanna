@@ -10,16 +10,16 @@ export default function ContactPage() {
     <Page title='Kontakt' subtitle='Kontaktieren Sie uns gerne bei Fragen oder Anregungen.'>
       <h2 className='font-tally text-lg w-full uppercase text-green mt-12'>Das sind wir</h2>
       <div className='flex flex-wrap mt-6 justify-center md:justify-between'>
+        <Person name='Jennifer Feldkamp' position='Vorsitzende' src='/jennifer-feldkamp.png' />
+        <Person name='Katharina Rokahr' position='Vorsitzende' src='/katharina-rokahr.png' />
+        <Person name='Anna aus dem Moore' position='Kassenwartin' src='/anna-aus-dem-moore.png' />
+        <Person name='Frieda Olberding' position='Schriftführerin' src='/frieda-olberding.png' />
+        <Person name='Esta Brinkmann' position='Kassenprüferin' src='/esta-brinkmann.png' />
         <Person
-          name='Eva-Maria Kleine Starmann'
-          position='Vorsitzende'
-          src='/eva-maria-kleine-starmann.png'
+          name='Britta Lemmermöhle'
+          position='Kassenprüferin'
+          src='/britta-lemmermoehle.png'
         />
-        <Person name='Annemarie Eyemann' position='Vorsitzende' src='/annemarie-eymann.png' />
-        <Person name='Marion Bruns' position='Kassenwartin' src='/marion-bruns.png' />
-        <Person name='Katharina Rokahr' position='Schriftführerin' src='/katharina-rokahr.png' />
-        <Person name='Jennifer Feldkamp' position='Kassenprüferin' src='/jennifer-feldkamp.png' />
-        <Person name='Eva-Maria Heye' position='Kassenprüferin' src='/eva-maria-heye.png' />
       </div>
       <div className='flex flex-wrap md:flex-nowrap gap-4 w-full mt-12'>
         <div className='w-full md:w-1/2 flex flex-wrap gap-4 content-start'>
