@@ -36,6 +36,8 @@ Die offizielle Webseite des **Fördervereins der Kita & des Familienzentrums Joh
 
 - Vollständiger Name: Freunde und Förderer Kita und Familienzentrum Johanna Alfhausen e.V.
 - Rechtsform: eingetragener Verein (e.V.), gemeinnützig
+- Gründung: 13. Oktober 2021
+- Vereinsregister: VR 202199, Amtsgericht Osnabrück
 - Sitz: Alte Schulstraße 8, 49594 Alfhausen, Niedersachsen, Deutschland
 - Mitgliedsbeitrag: 12 € pro Jahr
 - IBAN: DE25 2655 1540 0085 4670 33 (Kreissparkasse Bersenbrück)

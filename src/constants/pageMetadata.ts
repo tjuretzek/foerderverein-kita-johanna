@@ -40,7 +40,17 @@ export const organizationJsonLd = {
   '@type': 'NGO',
   '@id': orgId,
   name: 'Förderverein Kita & Familienzentrum Johanna Alfhausen e.V.',
+  legalName: 'Freunde und Förderer Kita und Familienzentrum Johanna Alfhausen e.V.',
   alternateName: 'Freunde und Förderer Kita und Familienzentrum Johanna Alfhausen e.V.',
+  foundingDate: '2021-10-13',
+  identifier: [
+    {
+      '@type': 'PropertyValue',
+      propertyID: 'Vereinsregister',
+      value: 'VR 202199',
+      description: 'Amtsgericht Osnabrück',
+    },
+  ],
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   image: `${siteUrl}/banner.png`,
