@@ -1,6 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin 'tailwind-scrollbar-hide';
+
+@theme {
+  --color-background: #fff;
+  --color-green: #7ab542;
+  --color-green-dark: #048242;
+  --color-orange: #ef8221;
+  --color-orange-dark: #e86124;
+  --color-primary: #666666;
+  --color-secondary: #ffffff;
+
+  --font-sans: Futura, sans-serif;
+  --font-tally: Tally, sans-serif;
+
+  --text-sm: 16px;
+  --text-sm--line-height: 18px;
+  --text-base: 20px;
+  --text-base--line-height: 26px;
+  --text-lg: 38px;
+  --text-lg--line-height: 44px;
+  --text-xl: 48px;
+  --text-xl--line-height: 64px;
+
+  --spacing-15: 60px;
+  --spacing-25: 100px;
+}
+
+@utility bg-footer {
+  background-image: url('/footer.png');
+}
+
+@utility h-page {
+  height: calc(100dvh - 100px);
+}
+
+@utility min-h-page {
+  min-height: calc(100dvh - 100px);
+}
+
+@utility gradient-input-label {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 50%);
+}
 
 @font-face {
   font-family: 'Futura';
