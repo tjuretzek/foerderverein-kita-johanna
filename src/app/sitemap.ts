@@ -3,7 +3,11 @@ import { siteUrl } from 'constants/pageMetadata'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
-  const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
+  const pages: {
+    path: string
+    priority: number
+    changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency']
+  }[] = [
     { path: '', priority: 1, changeFrequency: 'monthly' },
     { path: '/mitglied-werden', priority: 0.9, changeFrequency: 'yearly' },
     { path: '/spenden', priority: 0.9, changeFrequency: 'yearly' },

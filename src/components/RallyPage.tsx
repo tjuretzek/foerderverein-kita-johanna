@@ -1,7 +1,8 @@
 'use client'
 
 import classNames from 'classnames'
-import { useEffect, useState } from 'react'
+import { useClientValue } from 'hooks/useClientValue'
+import { useState } from 'react'
 import { isRallyActive } from '../config/rallyConfig'
 import InputField from './InputField'
 import TrackedButton from './TrackedButton'
@@ -23,30 +24,19 @@ const RallyPage: React.FC<RallyPageProps> = ({
   expectedAnswer,
   onSuccess,
 }) => {
-  const [name, setName] = useState('')
+  const storedName = useClientValue(() => localStorage.getItem('rally_user_name') ?? '', '')
+  const [nameInput, setName] = useState<string | null>(null)
+  const name = nameInput ?? storedName
   const [answer, setAnswer] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const alreadySubmitted = useClientValue(
+    () => JSON.parse(localStorage.getItem('rally_submitted_pages') || '[]').includes(pageId),
+    false,
+  )
+  const [justSubmitted, setIsSubmitted] = useState(false)
+  const isSubmitted = alreadySubmitted || justSubmitted
   const [error, setError] = useState('')
-  const [rallyActive, setRallyActive] = useState(true)
-
-  useEffect(() => {
-    // Get name from localStorage on component mount
-    const savedName = localStorage.getItem('rally_user_name')
-    if (savedName) {
-      setName(savedName)
-    }
-
-    // Check if user has already submitted for this page
-    const submittedPages = JSON.parse(localStorage.getItem('rally_submitted_pages') || '[]')
-    if (submittedPages.includes(pageId)) {
-      setIsSubmitted(true)
-    }
-
-    // Check if rally is active
-    const active = isRallyActive()
-    setRallyActive(active)
-  }, [pageId])
+  const rallyActive = useClientValue(isRallyActive, true)
 
   const handleNameChange = (value: string) => {
     setName(value)

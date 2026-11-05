@@ -21,7 +21,11 @@ export default function ContactPage() {
         <Person name='Jennifer Feldkamp' position='Vorsitzende' src='/jennifer-feldkamp.png' />
         <Person name='Katharina Rokahr' position='Vorsitzende' src='/katharina-rokahr.png' />
         <Person name='Anna aus dem Moore' position='Kassenwartin' src='/anna-aus-dem-moore.png' />
-        <Person name='Friederike Olberding' position='Schriftführerin' src='/friederike-olberding.png' />
+        <Person
+          name='Friederike Olberding'
+          position='Schriftführerin'
+          src='/friederike-olberding.png'
+        />
         <Person name='Esta Brinkmann' position='Kassenprüferin' src='/esta-brinkmann.png' />
         <Person
           name='Britta Lemmermöhle'

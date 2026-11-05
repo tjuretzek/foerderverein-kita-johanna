@@ -32,8 +32,8 @@ export default function Home() {
         <p className='text-center w-full mt-2'>
           Der Förderverein Kita &amp; Familienzentrum Johanna Alfhausen e.V. ist ein gemeinnütziger
           Verein aus Alfhausen in Niedersachsen. Wir unterstützen die Kita und das Familienzentrum
-          Johanna finanziell und organisatorisch — überall dort, wo das Budget der Einrichtung
-          nicht ausreicht.
+          Johanna finanziell und organisatorisch — überall dort, wo das Budget der Einrichtung nicht
+          ausreicht.
         </p>
         <div className='flex w-full justify-center flex-wrap mt-6 gap-4'>
           <Button href='/mitglied-werden' text='Mitglied werden' type='primary' />
@@ -77,7 +77,9 @@ export default function Home() {
             </p>
           </details>
           <details className='w-full bg-white/10 rounded p-4'>
-            <summary className='font-bold cursor-pointer'>Wie hoch ist der Mitgliedsbeitrag?</summary>
+            <summary className='font-bold cursor-pointer'>
+              Wie hoch ist der Mitgliedsbeitrag?
+            </summary>
             <p className='mt-2'>
               Der Mitgliedsbeitrag beträgt 12 € pro Jahr — das entspricht 1 € pro Monat.
             </p>
@@ -96,8 +98,8 @@ export default function Home() {
               Wofür verwendet der Förderverein die Mittel?
             </summary>
             <p className='mt-2'>
-              Wir finanzieren Spielgeräte, Einrichtungsgegenstände, Ausflüge und Veranstaltungen
-              der Kita und des Familienzentrums Johanna in Alfhausen.
+              Wir finanzieren Spielgeräte, Einrichtungsgegenstände, Ausflüge und Veranstaltungen der
+              Kita und des Familienzentrums Johanna in Alfhausen.
             </p>
           </details>
           <details className='w-full bg-white/10 rounded p-4'>

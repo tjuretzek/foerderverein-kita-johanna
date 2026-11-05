@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useClientValue } from 'hooks/useClientValue'
 import { isRallyActive } from '../config/rallyConfig'
 import RallyPage from './RallyPage'
 import RallyPageWrapper from './RallyPageWrapper'
@@ -30,11 +30,7 @@ export default function RallyStationTemplate({
   question,
   expectedAnswer,
 }: RallyStationTemplateProps) {
-  const [rallyActive, setRallyActive] = useState(true)
-
-  useEffect(() => {
-    setRallyActive(isRallyActive())
-  }, [])
+  const rallyActive = useClientValue(isRallyActive, true)
 
   // WebP Pfad erstellen (JPG durch WebP ersetzen)
   const webpPath = imagePath.replace('.jpg', '.webp')

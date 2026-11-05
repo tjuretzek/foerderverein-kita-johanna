@@ -1,5 +1,6 @@
 'use client'
 
+import { useClientValue } from 'hooks/useClientValue'
 import { useEffect, useState } from 'react'
 import { rallyStations } from '../../../data/rallyStations'
 import { RallyUserWithCheckins } from '../../../lib/database'
@@ -7,8 +8,24 @@ import { RallyUserWithCheckins } from '../../../lib/database'
 // Verhindere statisches Rendering wegen sessionStorage
 export const dynamic = 'force-dynamic'
 
+async function loadUsers(): Promise<RallyUserWithCheckins[] | null> {
+  try {
+    const response = await fetch('/api/rally/users')
+    const data = await response.json()
+    return data.success && data.users ? data.users : null
+  } catch (error) {
+    console.error('Error fetching users:', error)
+    return null
+  }
+}
+
 export default function AdminDashboard() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const hasSavedAuth = useClientValue(
+    () => sessionStorage.getItem('rally_admin_auth') !== null,
+    false,
+  )
+  const [loggedIn, setIsAuthenticated] = useState(false)
+  const isAuthenticated = loggedIn || hasSavedAuth
   const [password, setPassword] = useState('')
   const [users, setUsers] = useState<RallyUserWithCheckins[]>([])
   const [loading, setLoading] = useState(true)
@@ -21,20 +38,27 @@ export default function AdminDashboard() {
 
   const maxStations = rallyStations.length
 
-  useEffect(() => {
-    // Check if already authenticated from sessionStorage
-    const savedPassword = sessionStorage.getItem('rally_admin_auth')
-    if (savedPassword) {
-      setPassword(savedPassword)
-      setIsAuthenticated(true)
+  const applyUsers = (loaded: RallyUserWithCheckins[] | null) => {
+    if (loaded) {
+      setUsers(loaded)
     }
-  }, [])
+    setLoading(false)
+  }
+
+  const fetchUsers = () => loadUsers().then(applyUsers)
 
   useEffect(() => {
     if (isAuthenticated) {
-      fetchUsers()
+      const refresh = () =>
+        loadUsers().then((loaded) => {
+          if (loaded) {
+            setUsers(loaded)
+          }
+          setLoading(false)
+        })
+      refresh()
       // Auto-refresh alle 10 Sekunden
-      const interval = setInterval(fetchUsers, 10000)
+      const interval = setInterval(refresh, 10000)
       return () => clearInterval(interval)
     }
   }, [isAuthenticated])
@@ -76,21 +100,6 @@ export default function AdminDashboard() {
       const num = getStationNumber(c.page_id)
       return num === stationNumber
     })
-  }
-
-  const fetchUsers = async () => {
-    try {
-      const response = await fetch('/api/rally/users')
-      const data = await response.json()
-
-      if (data.success && data.users) {
-        setUsers(data.users)
-      }
-    } catch (error) {
-      console.error('Error fetching users:', error)
-    } finally {
-      setLoading(false)
-    }
   }
 
   const handleSort = (column: 'name' | 'erreicht' | 'korrekt') => {
